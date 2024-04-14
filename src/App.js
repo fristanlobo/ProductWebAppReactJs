@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Signup from "./components/Signup";
 import Private from "./components/Private";
 import Login from "./components/Login";
+import AddProduct from "./components/AddProduct";
 const App = () => {
   return (
     <div className="App">
@@ -17,7 +18,7 @@ const App = () => {
             />
             <Route
               path='/add'
-              element={<h1>Product adding component</h1>}
+              element={<AddProduct />}
             />
             <Route
               path='/update'

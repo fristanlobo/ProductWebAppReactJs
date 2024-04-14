@@ -56,3 +56,11 @@
   margin-left: 30%;
   margin-top: 100px;
 }
+
+/*Add Product */
+.invalid {
+  color: red;
+  margin-top: -20px;
+  display: block;
+  margin-left: 20px;
+}
