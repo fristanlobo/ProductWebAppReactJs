@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
+import { header_data, url } from '../common/constants';
 
 const Signup = () => {
     const [name, setName] = useState();
@@ -10,24 +11,23 @@ const Signup = () => {
 
     useEffect(() => {
         const auth = localStorage.getItem("user");
-      
+
         if (auth) {
             navigate("/");
         }
     }, [])
 
     const Signup = async () => {
-        const header = new Headers();
-        header.append("Content-Type", "application/json");
+
         const body = {
             name: name,
             email: email,
             password: password
         }
-        let result = await fetch("http://localhost:8001/api/auth/register", {
+        let result = await fetch(url + "auth/register", {
             method: 'POST',
             body: JSON.stringify(body),
-            headers: header
+            headers: header_data
         })
         const data = await result.json();
         localStorage.setItem('user', data)
@@ -69,4 +69,4 @@ const Signup = () => {
     )
 }
 
-export default Signup
+export default Signup;

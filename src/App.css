@@ -64,3 +64,20 @@
   display: block;
   margin-left: 20px;
 }
+
+/*display product*/
+.product {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.product ul li {
+  display: inline-block;
+  border: 1px solid skyblue;
+  padding: 5px;
+  width: 150px;
+}
+
+.product ul {
+  margin: 0px;
+}

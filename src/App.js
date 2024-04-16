@@ -5,6 +5,9 @@ import Signup from "./components/Signup";
 import Private from "./components/Private";
 import Login from "./components/Login";
 import AddProduct from "./components/AddProduct";
+import ProductList from "./components/ProductList";
+import UpdateProduct from "./components/UpdateProduct";
+
 const App = () => {
   return (
     <div className="App">
@@ -14,15 +17,15 @@ const App = () => {
           <Route element={<Private />}>
             <Route
               path='/'
-              element={<h1>Product listing component</h1>}
+              element={<ProductList />}
             />
             <Route
               path='/add'
               element={<AddProduct />}
             />
             <Route
-              path='/update'
-              element={<h1>Product updating component</h1>}
+              path='/update/:id'
+              element={<UpdateProduct />}
             />
             <Route
               path='/logout'
