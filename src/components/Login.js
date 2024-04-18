@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
-import { useNavigate } from 'react-router-dom';
+import { json, useNavigate } from 'react-router-dom';
 import { header_data, url } from '../common/constants';
 
 const Login = () => {
@@ -30,6 +30,7 @@ const Login = () => {
         if (data.status === true) {
             //console.log(JSON.stringify(data.user));
             localStorage.setItem("user", JSON.stringify(data.user));
+            localStorage.setItem("auth",JSON.stringify(data.token))
             navigate("/")
         }
         else {

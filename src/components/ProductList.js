@@ -7,7 +7,7 @@ const ProductList = () => {
 
     useEffect(() => {
         getProduct();
-    }, [product]);
+    }, []);
 
     const getProduct = async () => {
         let result = await fetch(url + "product/getProduct")
@@ -27,6 +27,7 @@ const ProductList = () => {
         const response = await result.json();
         if (response.status) {
             alert(" Product deleted successfully");
+            getProduct();
         }
     }
 

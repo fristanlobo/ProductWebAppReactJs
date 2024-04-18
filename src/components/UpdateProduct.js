@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { url } from '../common/constants';
-import { useParams } from 'react-router-dom';
+import { header_data, url } from '../common/constants';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const UpdateProduct = () => {
     const [prodName, setProdName] = useState("");
@@ -10,6 +10,7 @@ const UpdateProduct = () => {
     const [error, setError] = useState(false);
 
     const params = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         getspecificProduct();
@@ -26,10 +27,25 @@ const UpdateProduct = () => {
         }
     }
 
-    const handleUpdateProduct = () => {
-
-
+    const handleUpdateProduct = async () => {
+        const body = {
+            ProductName: prodName,
+            ProductPrice: prodPrice,
+            ProductCategory: prodCategory,
+            ProductCompany: prodComp,
+        }
+        let result = await fetch(url + "product/updateProduct/" + params.id, {
+            method: 'PUT',
+            headers: header_data,
+            body: JSON.stringify(body),
+        });
+        const data = await result.json();
+        if (data.acknowledged) {
+            alert("Data updated successfully");
+            navigate("/")
+        }
     }
+
     return (
         <div className='containerRegister'>
             <h1>
