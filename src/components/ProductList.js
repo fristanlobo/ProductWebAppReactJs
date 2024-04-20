@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { header_data, url } from '../common/constants';
+import { url } from '../common/constants';
 import { Link } from 'react-router-dom';
 
 const ProductList = () => {
@@ -10,9 +10,12 @@ const ProductList = () => {
     }, []);
 
     const getProduct = async () => {
-        let result = await fetch(url + "product/getProduct")
+        let result = await fetch(url + "product/getProduct", {
+            headers: {
+                'authorization': 'Bearer ' + JSON.parse(localStorage.getItem("auth"))
+            },
+        })
         const data = await result.json();
-        console.log(data)
         if (data.length > 0) {
             setProductList(data);
         }
@@ -21,8 +24,9 @@ const ProductList = () => {
     const handleDeleteProduct = async (data) => {
         let result = await fetch(url + "product/deleteProduct/" + data._id, {
             method: 'DELETE',
-            headers: header_data,
-
+            headers: {
+                'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("auth"))
+            },
         });
         const response = await result.json();
         if (response.status) {

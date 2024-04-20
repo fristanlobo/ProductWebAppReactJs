@@ -17,7 +17,12 @@ const UpdateProduct = () => {
     }, [])
 
     const getspecificProduct = async () => {
-        let result = await fetch(url + "product/getProduct/" + params.id)
+        let result = await fetch(url + "product/getProduct/" + params.id,{
+            headers: {
+                "Content-Type": "application/json",
+                'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("auth"))
+            },
+        })
         const data = await result.json();
         if (data) {
             setProdName(data.ProductName);
@@ -28,6 +33,7 @@ const UpdateProduct = () => {
     }
 
     const handleUpdateProduct = async () => {
+        // console.log("><>",'Bearer ' + JSON.parse(localStorage.getItem("auth")))
         const body = {
             ProductName: prodName,
             ProductPrice: prodPrice,
@@ -36,7 +42,10 @@ const UpdateProduct = () => {
         }
         let result = await fetch(url + "product/updateProduct/" + params.id, {
             method: 'PUT',
-            headers: header_data,
+            headers: {
+                "Content-Type": "application/json",
+                'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("auth"))
+            },
             body: JSON.stringify(body),
         });
         const data = await result.json();

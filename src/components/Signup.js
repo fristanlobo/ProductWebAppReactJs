@@ -18,7 +18,6 @@ const Signup = () => {
     }, [])
 
     const Signup = async () => {
-
         const body = {
             name: name,
             email: email,
@@ -27,11 +26,13 @@ const Signup = () => {
         let result = await fetch(url + "auth/register", {
             method: 'POST',
             body: JSON.stringify(body),
-            headers: header_data
+            headers: {
+                "Content-Type": "application/json"
+            },
         })
         const data = await result.json();
         localStorage.setItem('user', data)
-        navigate("/")
+        navigate("/login")
     }
 
     return (

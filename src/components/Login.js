@@ -24,13 +24,15 @@ const Login = () => {
         let result = await fetch(url + "auth/login", {
             method: 'POST',
             body: JSON.stringify(body),
-            headers: header_data
+            headers: {
+                'Content-Type': 'application/json'
+            },
         })
         const data = await result.json();
         if (data.status === true) {
             //console.log(JSON.stringify(data.user));
             localStorage.setItem("user", JSON.stringify(data.user));
-            localStorage.setItem("auth",JSON.stringify(data.token))
+            localStorage.setItem("auth", JSON.stringify(data.token))
             navigate("/")
         }
         else {
