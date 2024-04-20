@@ -28,7 +28,7 @@ const Nav = () => {
                             <Link to='/profile'>profile</Link>
                         </li>
                         <li>
-                            <Link onClick={logout} to='/signup'>Logout</Link>
+                            <Link onClick={logout} to='/login'>Logout</Link>
                         </li>
                     </ul>
 

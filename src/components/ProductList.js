@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { url } from '../common/constants';
 import { Link } from 'react-router-dom';
+import '../App.css'
 
 const ProductList = () => {
     const [product, setProductList] = useState("");
@@ -35,9 +36,25 @@ const ProductList = () => {
         }
     }
 
+    const handleProductSeach = async (event) => {
+        if (event.target.value) {
+            let result = await fetch(url + "product/search/" + event.target.value)
+            const data = await result.json();
+            if (data.length > 0) {
+                setProductList(data);
+            }
+        }
+        else {
+            getProduct();
+        }
+    }
+
     return (
         <div className='product'>
             <h3> ProductList</h3>
+
+            <input className='searchTextBox' type='text' placeholder='search Product' onChange={handleProductSeach} />
+
             <ul>
                 <li>Sr No </li>
                 <li>Name </li>

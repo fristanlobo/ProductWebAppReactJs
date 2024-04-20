@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
-import { header_data, url } from '../common/constants';
+import { url } from '../common/constants';
 
 const Signup = () => {
     const [name, setName] = useState();
@@ -19,7 +19,7 @@ const Signup = () => {
 
     const Signup = async () => {
         const body = {
-            name: name,
+            username: name,
             email: email,
             password: password
         }
