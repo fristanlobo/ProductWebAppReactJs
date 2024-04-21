@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import AddProduct from "./components/AddProduct";
 import ProductList from "./components/ProductList";
 import UpdateProduct from "./components/UpdateProduct";
+import Profile from "./components/Profile";
 
 const App = () => {
   return (
@@ -33,7 +34,7 @@ const App = () => {
             />
             <Route
               path='/profile'
-              element={<h1>Profile component</h1>}
+              element={<Profile />}
             />
           </Route>
 

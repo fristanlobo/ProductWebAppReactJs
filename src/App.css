@@ -81,3 +81,14 @@
 .product ul {
   margin: 0px;
 }
+
+/*search text box*/
+.searchTextBox{
+  width: 250px;
+  margin-bottom: 15px;
+  height: 30px;
+  border-width: 1px;
+  border-radius: 8px;
+  padding: 5px;
+  padding-left: 10px;
+}

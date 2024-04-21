@@ -38,7 +38,11 @@ const ProductList = () => {
 
     const handleProductSeach = async (event) => {
         if (event.target.value) {
-            let result = await fetch(url + "product/search/" + event.target.value)
+            let result = await fetch(url + "product/search/" + event.target.value, {
+                headers: {
+                    'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("auth"))
+                },
+            })
             const data = await result.json();
             if (data.length > 0) {
                 setProductList(data);
